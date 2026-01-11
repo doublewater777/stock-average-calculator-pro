@@ -15,8 +15,8 @@ export function Navbar() {
 
   const handleShare = async () => {
     const shareData = {
-      title: "QuantStock — Precision Share Cost Tracker",
-      text: "Calculate weighted average price for stock purchases with surgical accuracy.",
+      title: "Stock Average Calculator: Price After Buying More",
+      text: "Free tool to calculate average stock price after buying more shares.",
       url: window.location.href,
     };
 
@@ -46,14 +46,14 @@ export function Navbar() {
           <div className="w-8 h-8 rounded-lg overflow-hidden shadow-[0_0_15px_var(--accent-primary)] shadow-opacity-20 group-hover:scale-105 transition-transform">
             <Image
               src="/icon.png"
-              alt="QuantStock Logo"
+              alt="Stock Average Calculator Logo"
               width={32}
               height={32}
               className="w-full h-full object-cover"
             />
           </div>
-          <span className="font-black text-lg tracking-tight text-[var(--foreground)] uppercase">
-            Quant<span className="text-[var(--accent-primary)]">Stock</span>
+          <span className="font-black text-lg tracking-tight text-[var(--foreground)]">
+            Stock Average Calculator
           </span>
         </Link>
 

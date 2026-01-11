@@ -42,7 +42,7 @@ export async function generateMetadata({
         hi: "/hi",
       },
     },
-    authors: [{ name: "QuantStock Team" }],
+    authors: [{ name: "Stock Average Calculator" }],
     viewport: "width=device-width, initial-scale=1",
     icons: {
       icon: "/icon.png",
@@ -54,13 +54,13 @@ export async function generateMetadata({
       description:
         "Free tool to calculate average stock price after buying more shares. Weighted average calculator for portfolio position sizing.",
       url: baseUrl,
-      siteName: "QuantStock",
+      siteName: "Stock Average Calculator",
       images: [
         {
           url: "/icon.png",
           width: 512,
           height: 512,
-          alt: "QuantStock Logo",
+          alt: "Stock Average Calculator Logo",
         },
       ],
       locale: lang === "zh" ? "zh_CN" : lang === "hi" ? "hi_IN" : "en_US",
@@ -81,7 +81,7 @@ export async function generateMetadata({
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "QuantStock Average Calculator",
+  name: "Stock Average Calculator",
   operatingSystem: "All",
   applicationCategory: "FinanceApplication",
   aggregateRating: {

@@ -27,14 +27,14 @@ export function Footer() {
               <div className="w-8 h-8 rounded-lg overflow-hidden">
                 <Image
                   src="/icon.png"
-                  alt="QuantStock Icon"
+                  alt="Stock Average Calculator Icon"
                   width={32}
                   height={32}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="font-black text-xl tracking-tighter text-[var(--foreground)] uppercase">
-                Quant<span className="text-[var(--accent-primary)]">Stock</span>
+              <span className="font-black text-xl tracking-tighter text-[var(--foreground)]">
+                Stock Average Calculator
               </span>
             </Link>
             <p className="text-sm text-[var(--text-dim)] leading-relaxed font-medium">

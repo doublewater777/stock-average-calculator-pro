@@ -222,9 +222,9 @@ export const translations: Translations = {
     hi: "अस्वीकरण: गणना केवल सूचनात्मक उद्देश्यों के लिए है और वित्तीय सलाह नहीं है। अपने जोखिम पर उपयोग करें।",
   },
   "footer.copyright": {
-    en: "© ${year} QuantStock. All rights reserved.",
-    zh: "© ${year} QuantStock. 版权所有。",
-    hi: "© ${year} QuantStock. सभी अधिकार सुरक्षित।",
+    en: "© ${year} Stock Average Calculator. All rights reserved.",
+    zh: "© ${year} Stock Average Calculator. 版权所有。",
+    hi: "© ${year} Stock Average Calculator. सभी अधिकार सुरक्षित।",
   },
 
   // Educational Page 1: How to calculate
