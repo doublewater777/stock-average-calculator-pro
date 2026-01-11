@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Theme - Technical Paper / Lab Aesthetic */
+  --background: #fbfbfd;
+  --foreground: #1d1d1f;
+  --surface: #ffffff;
+  --surface-hover: #f5f5f7;
+  --border: rgba(0, 0, 0, 0.08);
+  --accent-primary: #10b981; /* Emerald 500 */
+  --accent-secondary: #0ea5e9; /* Sky 500 */
+  --text-dim: #6e6e73;
+  --input-bg: rgba(0, 0, 0, 0.03);
+}
+
+.dark {
+  /* Dark Theme - High-Precision FinTech Aesthetic */
+  --background: #080809;
+  --foreground: #ffffff;
+  --surface: #121214;
+  --surface-hover: #1a1a1d;
+  --border: rgba(255, 255, 255, 0.08);
+  --accent-primary: #00ff88;
+  --accent-secondary: #00e1ff;
+  --text-dim: #8a8a93;
+  --input-bg: rgba(255, 255, 255, 0.04);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Hanken Grotesk", var(--font-outfit), var(--font-geist-sans);
+  --font-mono: "JetBrains Mono", var(--font-mono-calc), var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-[var(--background)] text-[var(--foreground)] antialiased transition-colors duration-300;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 }
 
-body {
+/* Custom surgical scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dim);
+}
+
+.glass-card {
+  @apply bg-[var(--surface)] border border-[var(--border)] rounded-3xl overflow-hidden transition-all duration-300;
+  box-shadow: 0 4px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+.dark .glass-card {
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.4);
+}
+
+.input-field {
+  @apply bg-[var(--input-bg)] border border-[var(--border)] rounded-xl px-4 py-3 text-[var(--foreground)] placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-[var(--accent-primary)]/50 transition-all font-mono;
 }
