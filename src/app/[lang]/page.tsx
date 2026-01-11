@@ -82,6 +82,18 @@ export default function Home() {
           id="seo-content"
           className="max-w-xl mx-auto px-4 pb-20 mt-12 border-t border-[var(--border)] pt-20"
         >
+          {/* Main Introduction - Human Readable Content for SEO */}
+          <div className="mb-16 space-y-6">
+            <h2 className="text-3xl font-bold text-[var(--foreground)] tracking-tight">
+              {t("seo.intro.title")}
+            </h2>
+            <div className="space-y-4 text-base text-[var(--text-dim)] leading-relaxed">
+              <p>{t("seo.intro.p1")}</p>
+              <p>{t("seo.intro.p2")}</p>
+              <p>{t("seo.intro.p3")}</p>
+              <p>{t("seo.intro.p4")}</p>
+            </div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-center md:text-left">
             <div className="space-y-4">
               <div className="w-10 h-10 rounded-xl bg-[var(--surface-hover)] flex items-center justify-center text-[var(--accent-primary)] mx-auto md:mx-0">

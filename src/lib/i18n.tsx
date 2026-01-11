@@ -25,9 +25,9 @@ export const translations: Translations = {
   "calc.title": { en: "Stock Average", zh: "股票成本均价", hi: "स्टॉक औसत" },
   "calc.title_suffix": { en: "Calculator", zh: "计算器", hi: "कैलकुलेटर" },
   "calc.subtitle": {
-    en: "Surgical accuracy for professional position sizing.",
-    zh: "为专业交易者设计的极简均价计算工具",
-    hi: "पेशेवर स्थिति आकार के लिए सर्जिकल सटीकता।",
+    en: "Free tool to calculate your average stock price after buying more shares",
+    zh: "免费计算加仓后的股票平均成本",
+    hi: "अधिक शेयर खरीदने के बाद अपने औसत स्टॉक मूल्य की गणना करने के लिए मुफ़्त उपकरण",
   },
 
   // Purchase Entries
@@ -102,6 +102,32 @@ export const translations: Translations = {
   },
 
   // SEO Content Blocks
+  "seo.intro.title": {
+    en: "What is a Stock Average Calculator?",
+    zh: "什么是股票均价计算器？",
+    hi: "स्टॉक औसत कैलकुलेटर क्या है?",
+  },
+  "seo.intro.p1": {
+    en: "The Stock Average Calculator is a professional tool designed to help investors accurately determine their weighted average share price. Whether you are averaging down on a position or scaling in, knowing your exact break-even point is crucial for effective portfolio management.",
+    zh: "股票均价计算器是一款专为投资者设计的专业工具，用于精确计算持仓的加权平均成本。无论您是由于亏损进行补仓，还是分批建仓，了解准确的盈亏平衡点对于仓位管理都至关重要。",
+    hi: "स्टॉक औसत कैलकुलेटर एक पेशेवर उपकरण है जिसे निवेशकों को उनके भारित औसत शेयर मूल्य को सटीक रूप से निर्धारित करने में मदद करने के लिए डिज़ाइन किया गया है। चाहे आप किसी स्थिति पर औसत कम कर रहे हों या स्केल कर रहे हों, प्रभावी पोर्टफोलियो प्रबंधन के लिए अपने सटीक ब्रेक-ईवन पॉइंट को जानना महत्वपूर्ण है।",
+  },
+  "seo.intro.p2": {
+    en: "When you purchase shares of the same stock at different prices, understanding your 'true' cost basis can be complex. This tool simplifies the math by factoring in both price and quantity for every trade, providing a precise weighted average.",
+    zh: "当您以不同的价格多次买入同一只股票时，计算“真实”的持仓成本可能会变得复杂。本工具通过综合计算每笔交易的价格和数量，为您提供毫无偏差的加权平均数据。",
+    hi: "जब आप एक ही स्टॉक के शेयर अलग-अलग कीमतों पर खरीदते हैं, तो अपने 'वास्तविक' लागत आधार को समझना जटिल हो सकता है। यह उपकरण प्रत्येक व्यापार के लिए मूल्य और मात्रा दोनों को ध्यान में रखकर गणित को सरल बनाता है, एक सटीक भारित औसत प्रदान करता है।",
+  },
+  "seo.intro.p3": {
+    en: "Beyond basic calculations, our Averaging Down Engine allows you to reverse-engineer your trades. It answers the critical question: 'How many shares do I need to buy at current market prices to bring my average down to a specific target?'",
+    zh: "除了基础计算外，我们的“智能补仓引擎”允许您对交易进行反向推演。它能回答一个关键问题：“在当前市价下，我需要再买入多少股，才能将均价降低到我的目标位置？”",
+    hi: "बुनियादी गणनाओं से परे, हमारा एवरेजिंग डाउन इंजन आपको अपने ट्रेडों को रिवर्स-इंजीनियर करने की अनुमति देता है। यह महत्वपूर्ण प्रश्न का उत्तर देता है: 'अपने औसत को एक विशिष्ट लक्ष्य तक लाने के लिए मुझे मौजूदा बाजार कीमतों पर कितने शेयर खरीदने की आवश्यकता है?'",
+  },
+  "seo.intro.p4": {
+    en: "Don't let hidden fees erode your profits. This calculator optionally includes trading commissions in your average cost, giving you a crystal-clear view of your net break-even price so you can exit with confidence.",
+    zh: "不要让隐形的手续费侵蚀您的利润。本计算器支持将交易佣金计入平均成本，让您清晰地看到净盈亏平衡点，从而自信地制定离场计划。",
+    hi: "छिपी हुई फीस को अपने मुनाफे को कम न करने दें। यह कैलकुलेटर वैकल्पिक रूप से आपकी औसत लागत में ट्रेडिंग कमीशन को शामिल करता है, जिससे आपको अपने शुद्ध ब्रेक-ईवन मूल्य का स्पष्ट दृश्य मिलता है ताकि आप आत्मविश्वास के साथ बाहर निकल सकें।",
+  },
+
   "seo.precision.title": {
     en: "Precision Sizing",
     zh: "精准仓位控制",
@@ -328,19 +354,57 @@ interface I18nContextType {
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
-export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Language>("en");
+export function I18nProvider({
+  children,
+  initialLang,
+}: {
+  children: React.ReactNode;
+  initialLang?: Language;
+}) {
+  const [lang, setLangState] = useState<Language>(initialLang || "en");
 
+  // Keep internal state in sync if initialLang changes (e.g. client-side nav)
   useEffect(() => {
-    const saved = localStorage.getItem("app-lang") as Language;
-    if (saved && (saved === "en" || saved === "zh" || saved === "hi")) {
-      setLangState(saved);
+    if (initialLang) {
+      setLangState(initialLang);
     }
-  }, []);
+  }, [initialLang]);
 
   const setLang = (newLang: Language) => {
-    setLangState(newLang);
-    localStorage.setItem("app-lang", newLang);
+    // With URL routing, we should navigate instead of setting state directly
+    if (typeof window !== "undefined") {
+      const currentPath = window.location.pathname;
+      const currentLang = currentPath.split("/")[1]; // e.g. 'en', 'zh'
+
+      // Remove current locale from path if present, to get raw path
+      let rawPath = currentPath;
+      if (["zh", "hi"].includes(currentLang)) {
+        // If it starts with /zh or /hi, strip it. /zh/foo -> /foo. /zh -> ""
+        rawPath = currentPath.substring(currentLang.length + 1);
+      }
+      // If currentLang is none of those (e.g. "about" or empty), rawPath is just currentPath.
+      // But wait, if path is just "/", currentLang is "". rawPath is "/".
+
+      // Ensure rawPath starts with /
+      if (!rawPath.startsWith("/")) rawPath = "/" + rawPath;
+
+      // Construct new path
+      let newPath;
+      if (newLang === "en") {
+        // If switching to English, we want NO prefix.
+        newPath = rawPath;
+      } else {
+        // If switching to other, we want /lang/rawPath
+        newPath = `/${newLang}${rawPath === "/" ? "" : rawPath}`;
+      }
+
+      // Final cleanup
+      if (newPath === "") newPath = "/";
+      // Normalize double slashes just in case
+      newPath = newPath.replace("//", "/");
+
+      window.location.href = newPath;
+    }
   };
 
   const t = (key: string, variables?: Record<string, string>) => {

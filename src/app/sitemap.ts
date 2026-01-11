@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://quantstock.io'
+  const baseUrl = 'https://stockaveragecalculators.com'
   
   const lastModified = new Date()
 
