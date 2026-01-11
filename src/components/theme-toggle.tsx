@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { Moon, Sun } from 'lucide-react';
-import { useTheme } from 'next-themes';
-import { motion } from 'framer-motion';
+import * as React from "react";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { motion } from "framer-motion";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -14,24 +14,43 @@ export function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return (
-      <div className="w-10 h-10 rounded-xl bg-[var(--surface)] border border-[var(--border)] animate-pulse" />
-    );
+    return <div className="w-10 h-10 rounded-xl animate-pulse" />;
   }
 
   return (
     <motion.button
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="group relative w-10 h-10 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[var(--foreground)] hover:border-[var(--accent-primary)] transition-all overflow-hidden"
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      className="p-2 rounded-lg hover:bg-[var(--surface-hover)] text-[var(--text-dim)] hover:text-[var(--foreground)] transition-all"
       aria-label="Toggle theme"
     >
-      <div className="relative w-5 h-5">
-        <Sun className="absolute inset-0 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-        <Moon className="absolute inset-0 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <div className="relative w-5 h-5 flex items-center justify-center">
+        <motion.div
+          initial={false}
+          animate={{
+            rotate: theme === "dark" ? -90 : 0,
+            scale: theme === "dark" ? 0 : 1,
+            opacity: theme === "dark" ? 0 : 1,
+          }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="absolute"
+        >
+          <Sun size={18} />
+        </motion.div>
+        <motion.div
+          initial={false}
+          animate={{
+            rotate: theme === "dark" ? 0 : 90,
+            scale: theme === "dark" ? 1 : 0,
+            opacity: theme === "dark" ? 1 : 0,
+          }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="absolute"
+        >
+          <Moon size={18} />
+        </motion.div>
       </div>
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
     </motion.button>
   );
 }
