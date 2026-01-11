@@ -5,6 +5,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { I18nProvider } from "@/lib/i18n";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
@@ -119,6 +121,8 @@ export default async function RootLayout({
             {children}
             <Footer />
           </ThemeProvider>
+          <Analytics />
+          <SpeedInsights />
         </I18nProvider>
       </body>
     </html>
