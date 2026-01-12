@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stock Average Calculator
 
-## Getting Started
+A professional, accessible stock average price calculator with support for multiple languages and advanced features.
 
-First, run the development server:
+🌐 **Live Demo:** [stockaveragecalculators.com](https://stockaveragecalculators.com)
+
+## ✨ Features
+
+- **Weighted Average Calculation** - Calculate your average stock price after multiple purchases
+- **Averaging Down Engine** - Reverse-engineer how many shares needed to reach target price
+- **Commission Support** - Include trading fees (percentage or flat fee) in calculations
+- **Multi-language Support** - English, Chinese (中文), Hindi (हिन्दी)
+- **Dark Mode** - Premium dark theme with smooth transitions
+- **Fully Accessible** - WCAG 2.1 AA compliant with comprehensive ARIA support
+- **Local Storage** - All data saved locally, 100% privacy-focused
+- **Mobile Optimized** - Responsive design for all devices
+- **SEO Optimized** - Structured data, proper heading hierarchy, meta tags
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 15 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **Fonts:** Outfit, JetBrains Mono
+- **Analytics:** Vercel Analytics & Speed Insights
+- **Deployment:** Vercel
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm, yarn, pnpm, or bun
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/doublewater777/stock-average-calculator-pro.git
+
+# Navigate to project directory
+cd stock-average-calculator-pro
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── [lang]/          # Internationalized routes
+│   │   ├── layout.tsx   # Root layout with metadata
+│   │   └── page.tsx     # Home page
+│   └── globals.css      # Global styles
+├── components/
+│   ├── calculator.tsx   # Main calculator component
+│   ├── navbar.tsx       # Navigation bar
+│   ├── footer.tsx       # Footer
+│   └── theme-provider.tsx
+└── lib/
+    └── i18n.tsx         # Internationalization
+```
 
-## Learn More
+## 🌍 Internationalization
 
-To learn more about Next.js, take a look at the following resources:
+The app supports URL-based language routing:
+- English: `/` or `/en`
+- Chinese: `/zh`
+- Hindi: `/hi`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Translations are managed in `src/lib/i18n.tsx`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ♿ Accessibility Features
 
-## Deploy on Vercel
+- Semantic HTML with `<fieldset>` and `<legend>` for form groups
+- Comprehensive ARIA labels and live regions
+- Keyboard navigation support
+- Screen reader optimized
+- Proper heading hierarchy (single h1 per page)
+- High contrast colors in both themes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📊 SEO Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Structured data (FAQPage, SoftwareApplication schemas)
+- Proper meta tags (OpenGraph, Twitter Cards)
+- Canonical URLs with hreflang
+- Sitemap and robots.txt
+- Optimized heading structure
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+MIT License - feel free to use this project for personal or commercial purposes.
+
+## 🔗 Links
+
+- **Website:** [stockaveragecalculators.com](https://stockaveragecalculators.com)
+- **GitHub:** [doublewater777/stock-average-calculator-pro](https://github.com/doublewater777/stock-average-calculator-pro)
+- **Author:** [@PanYang0203](https://twitter.com/PanYang0203)
+
+---
+
+Built with ❤️ using Next.js and TypeScript
