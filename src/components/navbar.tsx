@@ -86,8 +86,11 @@ export function Navbar() {
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsLangOpen(!isLangOpen)}
               className="p-2 rounded-lg hover:bg-[var(--surface-hover)] text-[var(--text-dim)] hover:text-[var(--foreground)] transition-all"
+              aria-label="Select language"
+              aria-haspopup="true"
+              aria-expanded={isLangOpen}
             >
-              <Languages size={18} />
+              <Languages size={18} aria-hidden="true" />
             </motion.button>
 
             <AnimatePresence>
@@ -96,12 +99,15 @@ export function Navbar() {
                   <div
                     className="fixed inset-0 z-10"
                     onClick={() => setIsLangOpen(false)}
+                    aria-hidden="true"
                   />
                   <motion.div
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     className="absolute right-0 mt-2 w-40 rounded-xl border border-[var(--border)] bg-[var(--surface)] p-1 shadow-2xl z-20"
+                    role="menu"
+                    aria-label="Language options"
                   >
                     {languages.map((l) => (
                       <button
@@ -116,8 +122,11 @@ export function Navbar() {
                             ? "bg-[var(--accent-primary)] text-black"
                             : "text-[var(--text-dim)] hover:bg-[var(--surface-hover)] hover:text-[var(--foreground)]"
                         )}
+                        role="menuitem"
+                        aria-label={`Switch to ${l.label}`}
+                        aria-current={lang === l.code ? "true" : undefined}
                       >
-                        <span>{l.flag}</span>
+                        <span aria-hidden="true">{l.flag}</span>
                         {l.label}
                       </button>
                     ))}
@@ -135,8 +144,9 @@ export function Navbar() {
               whileTap={{ scale: 0.95 }}
               onClick={handleShare}
               className="p-2 rounded-lg hover:bg-[var(--surface-hover)] text-[var(--text-dim)] hover:text-[var(--foreground)] transition-all"
+              aria-label="Share this page"
             >
-              <Share2 size={18} />
+              <Share2 size={18} aria-hidden="true" />
             </motion.button>
             <AnimatePresence>
               {copied && (
@@ -145,6 +155,8 @@ export function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   className="absolute bottom-full right-0 mb-2 px-2 py-1 bg-[var(--accent-primary)] text-black text-[10px] font-black rounded uppercase tracking-widest whitespace-nowrap shadow-xl pointer-events-none"
+                  role="status"
+                  aria-live="polite"
                 >
                   Copied!
                 </motion.div>

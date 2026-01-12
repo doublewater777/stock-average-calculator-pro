@@ -124,7 +124,7 @@ export default function Home() {
           <div className="mt-32 space-y-12">
             <div className="text-center md:text-left space-y-3">
               <h2 className="text-2xl font-bold text-[var(--foreground)] flex items-center justify-center md:justify-start gap-3">
-                <BookOpen className="text-blue-500" />
+                <BookOpen className="text-blue-500" aria-hidden="true" />
                 {t("nav.edu")}
               </h2>
               <p className="text-sm text-[var(--text-dim)]">
@@ -178,7 +178,10 @@ export default function Home() {
         <section id="faq" className="max-w-xl mx-auto px-4 pb-32">
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-[var(--foreground)] mb-2 flex items-center justify-center gap-3">
-              <HelpCircle className="text-[var(--accent-primary)]" />
+              <HelpCircle
+                className="text-[var(--accent-primary)]"
+                aria-hidden="true"
+              />
               {t("faq.title")}
             </h2>
           </div>
