@@ -141,8 +141,6 @@ export default function StockCalculator() {
     maximumFractionDigits: 4,
   });
 
-  if (!isLoaded) return null; // Avoid hydration mismatch for LocalStorage
-
   return (
     <div
       className="max-w-6xl mx-auto px-4 py-4 md:py-12 relative"
@@ -395,9 +393,7 @@ export default function StockCalculator() {
         {/* Right Column: Sticky Results Dashboard */}
         <div className="lg:sticky lg:top-24 order-1 lg:order-2">
           {/* Results Card - The Crown Jewel */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+          <div
             className="glass-card relative border-[var(--accent-primary)]/20 bg-gradient-to-br from-[var(--surface)] to-[var(--background)] shadow-xl md:shadow-2xl shadow-emerald-500/5"
             role="region"
             aria-label="Calculation results"
@@ -463,7 +459,7 @@ export default function StockCalculator() {
                 })}
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

@@ -49,6 +49,7 @@ export function Navbar() {
               alt="Stock Average Calculator Logo"
               width={32}
               height={32}
+              priority
               className="w-full h-full object-cover"
             />
           </div>
