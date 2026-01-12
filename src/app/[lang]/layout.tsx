@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "../../app/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
@@ -111,6 +112,18 @@ export default async function RootLayout({
       <body
         className={`${outfit.variable} ${jetbrains.variable} font-sans antialiased bg-[var(--background)] text-[var(--foreground)]`}
       >
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-Q5G71PXFP5"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Q5G71PXFP5');
+          `}
+        </Script>
         <I18nProvider initialLang={lang as any}>
           <script
             type="application/ld+json"
