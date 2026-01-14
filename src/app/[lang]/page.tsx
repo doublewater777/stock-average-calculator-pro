@@ -9,11 +9,11 @@ import {
   BookOpen,
   ArrowRight,
 } from "lucide-react";
-import { useI18n } from "@/lib/i18n";
+import { useI18n, getLocalizedPath } from "@/lib/i18n";
 import Link from "next/link";
 
 export default function Home() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
 
   const eduPages = [
     {
@@ -136,7 +136,7 @@ export default function Home() {
               {eduPages.map((page) => (
                 <Link
                   key={page.slug}
-                  href={`/${page.slug}`}
+                  href={getLocalizedPath(`/${page.slug}`, lang)}
                   className="group flex flex-col md:flex-row md:items-center justify-between p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent-primary)] transition-all gap-4"
                 >
                   <div className="space-y-1">

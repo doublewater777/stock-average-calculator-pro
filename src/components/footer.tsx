@@ -1,14 +1,12 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Twitter, Mail, ExternalLink } from "lucide-react";
-import { useI18n } from "@/lib/i18n";
-import { motion } from "framer-motion";
+import { useI18n, getLocalizedPath } from "@/lib/i18n";
 
 export function Footer() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const currentYear = new Date().getFullYear();
 
   const footerLinks = [
@@ -73,7 +71,7 @@ export function Footer() {
               {footerLinks.map((link) => (
                 <li key={link.name}>
                   <Link
-                    href={link.href}
+                    href={getLocalizedPath(link.href, lang)}
                     className="text-sm text-[var(--text-dim)] hover:text-[var(--accent-primary)] transition-colors inline-flex items-center gap-2 group"
                   >
                     {link.name}

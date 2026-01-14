@@ -4,7 +4,7 @@ import { Share2, Languages } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useI18n } from "@/lib/i18n";
+import { useI18n, getLocalizedPath } from "@/lib/i18n";
 import { useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -15,8 +15,8 @@ export function Navbar() {
 
   const handleShare = async () => {
     const shareData = {
-      title: "Stock Average Calculator: Price After Buying More",
-      text: "Free tool to calculate average stock price after buying more shares.",
+      title: t("share.title"),
+      text: t("share.text"),
       url: window.location.href,
     };
 
@@ -42,7 +42,7 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background)]/80 backdrop-blur-xl">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2.5 group">
+        <Link href={getLocalizedPath('/', lang)} className="flex items-center gap-2.5 group">
           <div className="w-8 h-8 rounded-lg overflow-hidden shadow-[0_0_15px_var(--accent-primary)] shadow-opacity-20 group-hover:scale-105 transition-transform">
             <Image
               src="/icon.png"
@@ -60,19 +60,19 @@ export function Navbar() {
 
         <div className="hidden md:flex items-center gap-8">
           <Link
-            href="#calculator"
+            href={getLocalizedPath('/#calculator', lang)}
             className="text-xs font-bold uppercase tracking-widest text-[var(--text-dim)] hover:text-[var(--accent-primary)] transition-colors"
           >
             {t("nav.calc")}
           </Link>
           <Link
-            href="#seo-content"
+            href={getLocalizedPath('/#seo-content', lang)}
             className="text-xs font-bold uppercase tracking-widest text-[var(--text-dim)] hover:text-[var(--accent-primary)] transition-colors"
           >
             {t("nav.edu")}
           </Link>
           <Link
-            href="#faq"
+            href={getLocalizedPath('/#faq', lang)}
             className="text-xs font-bold uppercase tracking-widest text-[var(--text-dim)] hover:text-[var(--accent-primary)] transition-colors"
           >
             {t("nav.faq")}
